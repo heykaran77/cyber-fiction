@@ -65,10 +65,7 @@ const CanvasSequence = () => {
           pin: true,
         },
 
-        onUpdate: () => {
-          scaleImage(images[imageSequence.frame], context);
-          console.log(images[imageSequence.frame]);
-        },
+        onUpdate: () => scaleImage(images[imageSequence.frame], context),
       });
 
       const handleResize = () => {
