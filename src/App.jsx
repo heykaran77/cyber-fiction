@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import CanvasSequence from "./components/CanvasSequence";
 import Marquee from "./components/Marquee";
 import NavBar from "./components/NavBar";
+import FooterSection from "./components/FooterSection";
 
 const App = () => {
   // Lenis Scroll X GSAP Setup
@@ -93,6 +94,7 @@ const App = () => {
             </div>
           </div>
         </PageSection>
+        <FooterSection />
       </main>
     </ReactLenis>
   );
