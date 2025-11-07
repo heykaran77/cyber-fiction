@@ -82,7 +82,7 @@ const CanvasSequence = () => {
     }, canvasRef);
 
     return () => ctx.revert();
-  }, [images, imageSequence.frame]);
+  }, []);
 
   return (
     <canvas
