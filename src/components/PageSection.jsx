@@ -16,13 +16,29 @@ const PageSection = ({ id, bgColor, children, className = "" }) => {
         pin: true,
         scrub: 3,
       });
+
+      gsap.from(
+        sectionRef.current.querySelectorAll(":scope > *:not(.no-anim)"),
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "ease",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            top: "top 80%",
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section className={`h-screen ${bgColor} ${className}`} ref={sectionRef}>
+    <section
+      className={`h-screen w-full ${bgColor} ${className}`}
+      ref={sectionRef}>
       {children || `Page ${id}`}
     </section>
   );
