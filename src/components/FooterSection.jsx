@@ -1,6 +1,12 @@
 import { Github, Instagram } from "lucide-react";
 import React from "react";
-import { BsGithub, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import {
+  BsGithub,
+  BsInstagram,
+  BsLinkedin,
+  BsTwitter,
+  BsTwitterX,
+} from "react-icons/bs";
 import { DiGithubBadge } from "react-icons/di";
 
 const FooterSection = () => {
@@ -37,7 +43,7 @@ const FooterSection = () => {
           </a>
           <a href="https://x.com/heykaran77" target="_blank">
             {" "}
-            <BsTwitter
+            <BsTwitterX
               size={26}
               className="text-neutral-500 hover:text-orange-400 cursor-pointer transition-colors"
             />

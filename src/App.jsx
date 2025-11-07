@@ -1,15 +1,28 @@
 import gsap from "gsap";
 import { ReactLenis, useLenis } from "lenis/react";
 import PageSection from "./components/PageSection";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CanvasSequence from "./components/CanvasSequence";
 import Marquee from "./components/Marquee";
 import NavBar from "./components/NavBar";
 import FooterSection from "./components/FooterSection";
+import { usePreLoader } from "./hooks/usePreloader";
+import PreLoader from "./components/PreLoader";
 
 const App = () => {
   // Lenis Scroll X GSAP Setup
   const lenisRef = useRef();
+
+  const [showContent, setShowContent] = useState(false);
+  const frameCount = 300;
+  const framePath = (i) => `/images/male${String(i).padStart(4, "0")}.png`;
+  const assets = [];
+  for (let i = 1; i <= frameCount; i++) {
+    const currentFrame = framePath(i);
+    assets.push(currentFrame);
+  }
+
+  const { progress, isLoaded } = usePreLoader(assets);
 
   useEffect(() => {
     function update(time) {
@@ -21,14 +34,28 @@ const App = () => {
     return () => gsap.ticker.remove(update);
   }, []);
 
+  const handleShowContent = () => {
+    setShowContent(true);
+  };
+
   return (
     <ReactLenis
       root
       options={{ lerp: 0.05, smoothTouch: true, autoRaf: false }}
       ref={lenisRef}>
-      <nav className="fixed top-0 left-0 z-50 w-full">
-        <NavBar />
-      </nav>
+      {!showContent && (
+        <PreLoader
+          progress={progress}
+          isLoaded={isLoaded}
+          onComplete={handleShowContent}
+        />
+      )}
+
+      {showContent && (
+        <nav className="fixed top-0 left-0 z-50 w-full">
+          <NavBar />
+        </nav>
+      )}
       <main className="relative overflow-hidden">
         <CanvasSequence />
         <PageSection id={1} bgColor="bg-white" className="relative">
