@@ -82,12 +82,12 @@ const CanvasSequence = () => {
     }, canvasRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [images, imageSequence.frame]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-screen object-cover absolute top-0 left-0 z-1"></canvas>
+      className="max-w-screen max-h-screen object-cover absolute top-0 left-0 z-1"></canvas>
   );
 };
 
