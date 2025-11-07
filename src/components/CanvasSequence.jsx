@@ -87,7 +87,7 @@ const CanvasSequence = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="max-w-screen max-h-screen object-cover absolute top-0 left-0 z-1"></canvas>
+      className="w-screen h-screen object-cover absolute top-0 left-0 z-1"></canvas>
   );
 };
 
