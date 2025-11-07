@@ -52,26 +52,28 @@ const CanvasSequence = () => {
       images[0].onload = () => {
         scaleImage(images[0], context);
       };
+      if (images.length === frameCount) {
+        gsap.to(imageSequence, {
+          frame: frameCount - 1,
+          snap: "frame",
+          ease: "none",
+          scrollTrigger: {
+            trigger: canvas,
+            start: "top top",
+            end: "500% top",
+            scrub: true,
+            pin: true,
+          },
 
-      gsap.to(imageSequence, {
-        frame: frameCount - 1,
-        snap: "frame",
-        ease: "none",
-        scrollTrigger: {
-          trigger: canvas,
-          start: "top top",
-          end: "500% top",
-          scrub: true,
-          pin: true,
-        },
-
-        onUpdate: () => scaleImage(images[imageSequence.frame], context),
-      });
+          onUpdate: () => scaleImage(images[imageSequence.frame], context),
+        });
+      }
 
       const handleResize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         scaleImage(images[imageSequence.frame], context);
+        ScrollTrigger.refresh();
       };
 
       window.addEventListener("resize", handleResize);
@@ -85,7 +87,7 @@ const CanvasSequence = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-screen object-cover absolute top-0 z-10"></canvas>
+      className="w-full h-screen object-cover absolute top-0 left-0 z-1 pointer-events-none"></canvas>
   );
 };
 
