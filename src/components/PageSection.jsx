@@ -22,9 +22,7 @@ const PageSection = ({ id, bgColor, children, className = "" }) => {
   }, []);
 
   return (
-    <section
-      className={`h-screen flex items-center justify-center ${bgColor} ${className}`}
-      ref={sectionRef}>
+    <section className={`h-screen ${bgColor} ${className}`} ref={sectionRef}>
       {children || `Page ${id}`}
     </section>
   );

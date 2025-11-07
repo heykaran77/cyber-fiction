@@ -3,6 +3,7 @@ import { ReactLenis, useLenis } from "lenis/react";
 import PageSection from "./components/PageSection";
 import { useEffect, useRef } from "react";
 import CanvasSequence from "./components/CanvasSequence";
+import Marquee from "./components/Marquee";
 
 const App = () => {
   // Lenis Scroll X GSAP Setup
@@ -25,14 +26,9 @@ const App = () => {
       ref={lenisRef}>
       <main className="relative overflow-hidden">
         <CanvasSequence />
-        <PageSection
-          id={1}
-          bgColor="bg-blue-500"
-          className="flex flex-col items-center justify-center">
-          <h2 className="text-9xl tracking-tighter font-black">
-            This is the child
-          </h2>
-          <p className="text-sm text-blue-900 font-medium">Hope this renders</p>
+        <PageSection id={1} bgColor="bg-white" className="relative">
+          <Marquee className="absolute top-32" />
+          <h2 className="absolute bottom-50 left-10">Build by Karan Singh</h2>
         </PageSection>
         <PageSection id={2} bgColor={"bg-red-500"} />
         <PageSection id={3} bgColor={"bg-yellow-500"} />
