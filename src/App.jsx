@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import FooterSection from "./components/FooterSection";
 import { usePreLoader } from "./hooks/usePreloader";
 import PreLoader from "./components/PreLoader";
+import OnekoCat from "./components/OnekoCat";
 
 const App = () => {
   // Lenis Scroll X GSAP Setup
@@ -57,6 +58,7 @@ const App = () => {
         </nav>
       )}
       <main className="relative overflow-hidden">
+        <OnekoCat />
         <CanvasSequence />
         <PageSection id={1} bgColor="bg-white" className="relative">
           <Marquee className="absolute top-32 no-anim" />
