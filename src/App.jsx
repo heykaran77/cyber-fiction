@@ -57,8 +57,8 @@ const App = () => {
           <NavBar />
         </nav>
       )}
+      {showContent && <OnekoCat />}
       <main className="relative overflow-hidden">
-        <OnekoCat />
         <CanvasSequence />
         <PageSection id={1} bgColor="bg-white" className="relative">
           <Marquee className="absolute top-32 no-anim" />

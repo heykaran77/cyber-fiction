@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { catConfig } from "../configs/CatCon.js";
 
 export default function OnekoCat() {
